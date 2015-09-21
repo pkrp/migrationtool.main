@@ -1,21 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="1.0"
-	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
-
-	<persistence-unit name="icat" transaction-type="JTA">
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_2_0.xsd"
+	version="2.0">
+	<persistence-unit name="icat" transaction-type="RESOURCE_LOCAL">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-		<jta-data-source>jdbc/icat</jta-data-source>
+		<!-- <jta-data-source>jdbc/icat</jta-data-source> -->
+		<jar-file>nosql-1.0.0.jar</jar-file>
+		<jar-file>sql-1.0.0.jar</jar-file>
+		
 		<properties>
-			<property name="eclipselink.cache.shared.default" value="false" />
-			<property name="eclipselink.logging.level" value="SEVERE" />
-			<!-- <property name="eclipselink.logging.level" value="FINE" /> -->
-			<!-- <property name="eclipselink.logging.level.sql" value="FINE" /> -->
-			<!-- <property name="eclipselink.logging.parameters" value="true" /> -->
-			<property name="eclipselink.ddl-generation" value="create-tables" />
-			<property name="eclipselink.ddl-generation.output_mode"
-				value="both" />
+			<property name="eclipselink.composite-unit" value="true" />
+			<property name="eclipselink.logging.timestamp" value="false" />
+			<property name="eclipselink.logging.thread" value="false" />
+			<property name="eclipselink.logging.session" value="false" />
+			<property name="eclipselink.logging.exceptions" value="false" />
+			<property name="eclipselink.logging.connection" value="false" />
+
 		</properties>
 	</persistence-unit>
-
 </persistence>
